@@ -1,0 +1,184 @@
+<!--
+Mock de página HTML: "Portfólio de Quadros"
+Arquivo: mock-portfolio-quadros.html
+Descrição: Mini-galeria responsiva com lightbox simples. Imagens usadas via picsum.photos (placeholder).
+Instruções: Salve este conteúdo como mock-portfolio-quadros.html e abra no navegador. Para publicar, envie para GitHub Pages ou Netlify.
+-->
+
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Portfólio de Quadros — Yngrid Fidelis (Mock)</title>
+  <style>
+    :root{--bg:#0f1720;--card:#0b1220;--text:#e6eef8;--muted:#9fb0c8}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;background:linear-gradient(180deg,#071027 0%,#0f1720 100%);color:var(--text);min-height:100vh}
+    .wrap{max-width:1100px;margin:36px auto;padding:20px}
+    header{display:flex;align-items:center;gap:16px}
+    h1{margin:0;font-size:1.4rem}
+    p.lead{margin:6px 0 20px;color:var(--muted)}
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}
+    .card{background:rgba(255,255,255,0.03);border-radius:12px;overflow:hidden;box-shadow:0 6px 18px rgba(2,6,23,0.6);cursor:pointer;transition:transform .18s}
+    .card:hover{transform:translateY(-6px)}
+    .thumb{width:100%;height:160px;object-fit:cover;display:block}
+    .meta{padding:12px}
+    .meta h3{margin:0;font-size:1rem}
+    .meta p{margin:6px 0 0;font-size:.86rem;color:var(--muted)}
+    footer{margin-top:20px;color:var(--muted);font-size:.85rem}
+
+    /* Lightbox */
+    .lb{position:fixed;inset:0;display:none;align-items:center;justify-content:center;padding:24px;background:rgba(2,6,23,0.8);z-index:999}
+    .lb.open{display:flex}
+    .lb-content{max-width:1000px;width:100%;border-radius:10px;overflow:hidden;background:var(--card);box-shadow:0 20px 50px rgba(0,0,0,0.7)}
+    .lb-img{width:100%;height:70vh;max-height:760px;object-fit:contain;background:#081124}
+    .lb-info{display:flex;justify-content:space-between;align-items:center;padding:12px 14px;color:var(--text)}
+    .btn{background:transparent;border:0;color:var(--text);padding:8px 10px;font-size:1rem;cursor:pointer}
+    .close{font-weight:700}
+
+    /* Responsive tweaks */
+    @media (max-width:600px){.thumb{height:140px}.lb-img{height:56vh}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <svg width="44" height="44" viewBox="0 0 24 24" fill="none" aria-hidden><rect width="24" height="24" rx="6" fill="#1f2937"/><path d="M6 15l4-6 4 6 4-8" stroke="#f8fafc" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div>
+        <h1>Portfólio de Quadros — Mock</h1>
+        <p class="lead">Mini-galeria de quadros (imagens placeholder). Clique em qualquer quadro para abrir em tamanho maior.</p>
+      </div>
+    </header>
+
+    <main>
+      <section class="grid" id="gallery">
+        <!-- Cada item tem data-src (imagem grande) e src (thumb) -->
+
+        <article class="card" tabindex="0" data-src="https://picsum.photos/id/1025/1200/900" aria-label="Quadro 1 - Mar e rochas">
+          <img class="thumb" src="https://picsum.photos/id/1025/600/400" alt="Quadro 1 — mar e rochas" />
+          <div class="meta">
+            <h3>Mar e Rochas</h3>
+            <p>Óleo sobre tela — 80 x 60 cm</p>
+          </div>
+        </article>
+
+        <article class="card" tabindex="0" data-src="https://picsum.photos/id/1031/1200/900" aria-label="Quadro 2 - Retrato impressionista">
+          <img class="thumb" src="https://picsum.photos/id/1031/600/400" alt="Quadro 2 — retrato impressionista" />
+          <div class="meta">
+            <h3>Retrato Impressionista</h3>
+            <p>Acrílica sobre tela — 60 x 80 cm</p>
+          </div>
+        </article>
+
+        <article class="card" tabindex="0" data-src="https://picsum.photos/id/1043/1200/900" aria-label="Quadro 3 - Paisagem urbana">
+          <img class="thumb" src="https://picsum.photos/id/1043/600/400" alt="Quadro 3 — paisagem urbana" />
+          <div class="meta">
+            <h3>Paisagem Urbana</h3>
+            <p>Mista — 100 x 70 cm</p>
+          </div>
+        </article>
+
+        <article class="card" tabindex="0" data-src="https://picsum.photos/id/1060/1200/900" aria-label="Quadro 4 - Abstrato colorido">
+          <img class="thumb" src="https://picsum.photos/id/1060/600/400" alt="Quadro 4 — abstrato colorido" />
+          <div class="meta">
+            <h3>Abstrato Colorido</h3>
+            <p>Mista — 70 x 70 cm</p>
+          </div>
+        </article>
+
+        <article class="card" tabindex="0" data-src="https://picsum.photos/id/1015/1200/900" aria-label="Quadro 5 - Natureza morta">
+          <img class="thumb" src="https://picsum.photos/id/1015/600/400" alt="Quadro 5 — natureza morta" />
+          <div class="meta">
+            <h3>Natureza Morta</h3>
+            <p>Óleo — 50 x 40 cm</p>
+          </div>
+        </article>
+
+        <article class="card" tabindex="0" data-src="https://picsum.photos/id/1027/1200/900" aria-label="Quadro 6 - Floresta ao entardecer">
+          <img class="thumb" src="https://picsum.photos/id/1027/600/400" alt="Quadro 6 — floresta ao entardecer" />
+          <div class="meta">
+            <h3>Floresta ao Entardecer</h3>
+            <p>Aquarela sobre papel — 60 x 40 cm</p>
+          </div>
+        </article>
+
+      </section>
+
+      <footer>
+        <p>Mock criado por você — use estas imagens como placeholders. Para publicar de verdade, eu posso gerar um repositório pronto para GitHub Pages.</p>
+      </footer>
+    </main>
+  </div>
+
+  <!-- Lightbox modal -->
+  <div class="lb" id="lightbox" role="dialog" aria-hidden="true">
+    <div class="lb-content">
+      <img id="lb-img" class="lb-img" src="" alt="Imagem ampliada" />
+      <div class="lb-info">
+        <div id="lb-caption">&nbsp;</div>
+        <div>
+          <button class="btn" id="prev" aria-label="Anterior">◀</button>
+          <button class="btn" id="next" aria-label="Próximo">▶</button>
+          <button class="btn close" id="close" aria-label="Fechar">✕</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Seleciona todos os cards
+    const cards = Array.from(document.querySelectorAll('.card'));
+    const lightbox = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lb-img');
+    const lbCaption = document.getElementById('lb-caption');
+    let currentIndex = -1;
+
+    function openLightbox(index){
+      const card = cards[index];
+      const src = card.dataset.src;
+      const title = card.querySelector('.meta h3').textContent;
+      const desc = card.querySelector('.meta p').textContent;
+      lbImg.src = src;
+      lbImg.alt = title + ' — ' + desc;
+      lbCaption.textContent = `${title} — ${desc}`;
+      lightbox.classList.add('open');
+      lightbox.setAttribute('aria-hidden','false');
+      currentIndex = index;
+    }
+
+    function closeLightbox(){
+      lightbox.classList.remove('open');
+      lightbox.setAttribute('aria-hidden','true');
+      lbImg.src = '';
+      currentIndex = -1;
+    }
+
+    function showNext(dir){
+      if(currentIndex < 0) return;
+      let next = currentIndex + dir;
+      if(next < 0) next = cards.length - 1;
+      if(next >= cards.length) next = 0;
+      openLightbox(next);
+    }
+
+    // Abrir ao clicar ou pressionar Enter
+    cards.forEach((c, i) => {
+      c.addEventListener('click', () => openLightbox(i));
+      c.addEventListener('keydown', (e) => { if(e.key === 'Enter') openLightbox(i); });
+    });
+
+    document.getElementById('close').addEventListener('click', closeLightbox);
+    document.getElementById('prev').addEventListener('click', () => showNext(-1));
+    document.getElementById('next').addEventListener('click', () => showNext(1));
+
+    // Fechar ao clicar fora da imagem ou pressionar Esc
+    lightbox.addEventListener('click', (e) => { if(e.target === lightbox) closeLightbox(); });
+    window.addEventListener('keydown', (e) => {
+      if(e.key === 'Escape') closeLightbox();
+      if(e.key === 'ArrowRight') showNext(1);
+      if(e.key === 'ArrowLeft') showNext(-1);
+    });
+  </script>
+</body>
+</html>
